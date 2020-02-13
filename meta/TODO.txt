@@ -1,0 +1,10 @@
+Windows
+
+CMD/POWERSHELL
+Some sort of sudo !! to start in admin mode
+
+WSL
+https://github.com/Konfekt/wsl-gui-bins - Launch windows gui from wsl
+
+ALL OS
+Abstract 'install'

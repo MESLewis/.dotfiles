@@ -1,0 +1,11 @@
+- clean: ['~']
+
+-defaults:
+    link:
+      relink: true
+
+- link:
+    ~/.gitconfig: gitconfig
+    ~/AppData/Local/nvim: nvim
+#    ~/AppData/Roaming/Notepad++: notepad++
+#    ~/.vscode: vscode
