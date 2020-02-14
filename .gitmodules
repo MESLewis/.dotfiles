@@ -1,3 +1,6 @@
 [submodule "meta/dotbot"]
 	path = meta/dotbot
 	url = https://github.com/meslewis/dotbot
+[submodule "meta/init/Windows_NT/beta-VioletGiraffe-file-commander/file-commander"]
+	path = meta/init/Windows_NT/beta-VioletGiraffe-file-commander/file-commander
+	url = https://github.com/VioletGiraffe/file-commander.git
