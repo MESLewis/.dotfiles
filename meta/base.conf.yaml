@@ -1,11 +1,49 @@
+
 - clean: ['~']
 
--defaults:
+  # Setup up initial path for ease of use
+- link:
+  # Link ~/.dotfiles to current directory
+  ~/.dotfiles:
+    path: ''
+    relink: true
+
+- shell:
+  # Add bin\windows to user path
+  -
+  command: cmd.exe /c "call bin\windows\pathadd.bat %USERPROFILE%\.dotfiles\bin\windows"
+  description: Adding bin to path
+  stderr: true
+  quiet: true
+
+
+  - defaults:
     link:
       relink: true
+      shell:
+        stderr: true
+        quiet: true
 
-- link:
-    ~/.gitconfig: gitconfig
+  - link:
+    ~/ShellAnything: ShellAnything.windows
+    ~/.gitconfig: git/gitconfig
     ~/AppData/Local/nvim: nvim
-#    ~/AppData/Roaming/Notepad++: notepad++
-#    ~/.vscode: vscode
+    ~/AppData/Local/nvim-data:
+      path: nvim/nvim-data
+
+  - shell:
+    - [install-app chocolatey]
+    - [install-app adoptopenjdk, Installing latest AdoptOpenJDK]
+    - [install-app jetbrainstoolbox, Installing Jetbrains Toolbox]
+    - [install-app 7zip, Installing 7zip]
+    - [install-app notepadplusplus]
+    - [install-app vlc]
+    - [install-app inkscape]
+    - [install-app gimp]
+    - [install-app wsl, Installing Windows Subsystem for Linux]
+    - [install-app neovim]
+    - [install-app windirstat]
+    - [install-app nodejs]
+    - [install-app yarn]
+      # Windows power user utilities
+    - [install-app powertoys]

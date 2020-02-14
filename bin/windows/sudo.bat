@@ -1,0 +1,1 @@
+@elevate -w -k %*

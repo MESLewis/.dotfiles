@@ -12,14 +12,13 @@ echo "This will be run if we are in ${SHELL}"
 #set -e
 set -x
 
-CONFIG="meta/install.conf.yaml"
+CONFIG="meta/base.conf.yaml"
 DOTBOT_DIR="meta/dotbot"
 
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "${BASEDIR}"
-: # git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
@@ -28,25 +27,6 @@ exit $?
 
 : # BEGIN CMD SCRIPT
 :CMDSCRIPT
-
-set WORKING_DIR=%CD:~-9,9%
-REM If we are not in .dotfiles directory assume we are in .dotfiles/meta and cd
-IF NOT "%WORKING_DIR%" == ".dotfiles" cd ..
-
-set NEED_CHOCO=0
-set NEED_GIT=0
-
-WHERE /q git
-IF ERRORLEVEL == 1 (
-echo Git will be installed
-set NEED_CHOCO=1
-set NEED_GIT=1
-)
-
-REM Jump to post environment setup
-IF "%NEED_CHOCO%" == "0" IF "%NEED_GIT%" == "0" GOTO ENVIRONMENT_GOOD
-
-echo Setting up required environment...
 REM Ensure we are running as admin
 REM BatchGotAdmin
 :-------------------------------------
@@ -62,7 +42,7 @@ if '%errorlevel%' NEQ '0' (
 :UACPrompt
     echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs"
     set params = %*:"=""
-    echo UAC.ShellExecute "cmd.exe", "/c %~s0 %params%", "", "runas", 1 >> "%temp%\getadmin.vbs"
+    echo UAC.ShellExecute "cmd.exe", "/k %~s0 %params%", "", "runas", 1 >> "%temp%\getadmin.vbs"
 
     "%temp%\getadmin.vbs"
     del "%temp%\getadmin.vbs"
@@ -72,44 +52,46 @@ if '%errorlevel%' NEQ '0' (
     pushd "%CD%"
     CD /D "%~dp0"
 :--------------------------------------
+echo WINDOWS INSTALL RUNNING
+echo %CD%
+set WORKING_DIR=%CD:~-9,9%
+REM If we are not in .dotfiles directory assume we are in .dotfiles/meta and cd
+IF NOT "%WORKING_DIR%" == ".dotfiles" cd ..
 
-REM Install chocolatey if doesn't exist.
-REM TODO check for this like checking for git at the beginning
-IF NOT EXIST %ALLUSERSPROFILE%\chocolatey\bin\choco.exe (
-echo "Installing chocolatey"
-@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command " [System.Net.ServicePointManager]REMSecurityProtocol = 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
-refreshenv
-)
+echo %CD%
+echo Setting up required environment...
+
+REM install chocolatey
+call meta\init\WINDOWS_NT\00_install_chocolatey.bat
 
 REM Install git
-IF %NEED_GIT% == 1 (
-echo "Installing git with chocolatey"
-choco install git --limit-output --yes --params "/GitAndUnixToolsOnPath"
+WHERE /q git
+IF ERRORLEVEL == 1 (
+echo "Installing git"
+call bin\windows\install-app.bat git --limit-output --yes --params "/GitAndUnixToolsOnPath"
 refreshenv
-set NEED_GIT=0
 )
-REM END NEED_GIT
 
-REM TODO install python
-
-
+REM Install python
+WHERE /q python
+IF ERRORLEVEL == 1 (
+echo "Installing python"
+call bin\windows\install-app.bat python --yes --limit-output
+refreshenv
+)
 REM END ENVIRONMENT SETUP
 
 echo Environment setup finished
-:ENVIRONMENT_GOOD
 
-echo Running
-
-SET CONFIG=meta\install.conf.yaml
+SET CONFIG=meta\base.conf.yaml
 SET DOTBOT_DIR=meta\dotbot
 SET DOTBOT_BIN=bin\dotbot.py
 SET BASEDIR=%cd%
 
-cd %cd%
+REM echo Updating meta/dotbot
 REM TODO I don't need to run this every time
-git submodule sync --quiet --recursive
-git submodule update --init --recursive "%DOTBOT_DIR%"
+REM git -C "%DOTBOT_DIR%" submodule sync --quiet --recursive
+REM git submodule update --init --recursive "%DOTBOT_DIR%"
 
-@echo on
-
-python "%BASEDIR%\%DOTBOT_DIR%\%DOTBOT_BIN%" -d "%BASEDIR%" -c "%CONFIG%"  %*
+echo Running...
+python "%BASEDIR%\%DOTBOT_DIR%\%DOTBOT_BIN%" -d "%BASEDIR%" -c "%BASEDIR%\%CONFIG%" --no-color %*

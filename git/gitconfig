@@ -1,0 +1,10 @@
+[user]
+	email = MESLewis@gmail.com
+	name = Morgan Lewis
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[core]
+	autocrlf = false

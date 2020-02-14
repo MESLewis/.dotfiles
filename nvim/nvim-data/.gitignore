@@ -1,0 +1,6 @@
+# Plugged contains git repositories managed by junegunn/vim-plug
+plugged
+# Shada is neovim metadata
+shada
+# Swap are open files
+swap
