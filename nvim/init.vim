@@ -18,6 +18,7 @@ call plug#begin(stdpath('data') . '/plugged')
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } " Google Chrome vim interop
 Plug 'junegunn/vim-easy-align'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' } " Preview markdown files in browser
+Plug 'tpope/vim-fugitive' " Adds git commands to vim
 
 " Call PlugInstall when new plugins added
 autocmd VimEnter *
@@ -39,6 +40,7 @@ nmap ga <Plug>(EasyAlign)
 
 
 """"""""Plug: markdown-preview.vim
+" TODO Doesn't launch
 " set to 1, nvim will open the preview window after entering the markdown buffer
 " default: 0
 let g:mkdp_auto_start = 1
@@ -129,4 +131,4 @@ if !exists('*ReloadVimrc')
 		call setpos('.', save_cursor)
 	endfun
 endif
-autocmd! BufWritePost $MYVIMRC call ReloadVimrc
+autocmd! BufWritePost $MYVIMRC call ReloadVimrc()

@@ -1,0 +1,10 @@
+HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers\
+HKEY_CLASSES_ROOT\*\shell
+HKEY_CLASSES_ROOT\AllFileSystemObjects\ShellEx\ContextMenuHandler
+
+All extensions are here
+
+The {00323-23-2-32323} strings are called CLSID key by windows
+
+cli for editing registry
+https://github.com/notlmn/winreg-cli

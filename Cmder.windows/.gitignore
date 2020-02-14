@@ -1,0 +1,7 @@
+# This choco package puts user configs in the same directory as the program.
+# Igore all package files
+icons
+vendor
+Cmder.exe
+LICENSE
+Version*

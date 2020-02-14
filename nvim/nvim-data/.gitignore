@@ -4,3 +4,5 @@ plugged
 shada
 # Swap are open files
 swap
+# Neovim log file
+log

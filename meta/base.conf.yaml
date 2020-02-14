@@ -4,34 +4,33 @@
   # Setup up initial path for ease of use
 - link:
   # Link ~/.dotfiles to current directory
-  ~/.dotfiles:
-    path: ''
-    relink: true
+    ~/.dotfiles:
+      path: ''
+      relink: true
 
 - shell:
   # Add bin\windows to user path
   -
-  command: cmd.exe /c "call bin\windows\pathadd.bat %USERPROFILE%\.dotfiles\bin\windows"
-  description: Adding bin to path
-  stderr: true
-  quiet: true
+    command: cmd.exe /c "call bin\windows\pathadd.bat %USERPROFILE%\.dotfiles\bin\windows"
+    description: Adding bin to path
+    stderr: true
+    quiet: true
 
-
-  - defaults:
+- defaults:
     link:
       relink: true
-      shell:
-        stderr: true
-        quiet: true
+    shell:
+      stderr: true
+      quiet: true
 
-  - link:
+- link:
     ~/ShellAnything: ShellAnything.windows
     ~/.gitconfig: git/gitconfig
     ~/AppData/Local/nvim: nvim
-    ~/AppData/Local/nvim-data:
-      path: nvim/nvim-data
+    ~/AppData/Local/nvim-data: nvim/nvim-data
+    /tools/Cmder : Cmder.windows
 
-  - shell:
+- shell:
     - [install-app chocolatey]
     - [install-app adoptopenjdk, Installing latest AdoptOpenJDK]
     - [install-app jetbrainstoolbox, Installing Jetbrains Toolbox]
@@ -47,3 +46,7 @@
     - [install-app yarn]
       # Windows power user utilities
     - [install-app powertoys]
+      # Windows omni-completion launcher / search
+    - [install-app wox]
+      # Windows better cmd window
+    - [install-app cmder]

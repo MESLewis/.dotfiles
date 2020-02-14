@@ -1,7 +1,7 @@
 Windows
-
-CMD/POWERSHELL
-Some sort of sudo !! to start in admin mode
+wox configure
+look at sysinternals https://docs.microsoft.com/en-us/sysinternals/
+look at cmder
 
 WSL
 https://github.com/Konfekt/wsl-gui-bins - Launch windows gui from wsl
