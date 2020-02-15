@@ -9,6 +9,16 @@
       relink: true
 
 - shell:
+  -
+    command: cmd.exe /c "call meta\init\Windows_NT\00_install_chocolatey.bat"
+    description: Ensuring chocolatey is installed
+    stderr: true
+    quiet: true
+  -
+    command: cmd.exe /c "choco upgrade --yes --limit-output microsoft-windows-terminal"
+    description: Installing new Microsoft Terminal
+    stderr: true
+    quiet: true
   # Add bin\windows to user path
   -
     command: cmd.exe /c "call bin\windows\pathadd.bat %USERPROFILE%\.dotfiles\bin\windows"
@@ -28,7 +38,7 @@
     ~/.gitconfig: git/gitconfig
     ~/AppData/Local/nvim: nvim
     ~/AppData/Local/nvim-data: nvim/nvim-data
-    /tools/Cmder : Cmder.windows
+    ~/AppData/Roaming/Highresolution Enterprises/XMouseButtonControl/XMBCSettings.xml : XMBCSettings.xml
 
 - shell:
     - [install-app chocolatey]
@@ -44,9 +54,9 @@
     - [install-app windirstat]
     - [install-app nodejs]
     - [install-app yarn]
+      # Windows mouse button tweaker
+    - [install-app x-mouse-button-control]
       # Windows power user utilities
     - [install-app powertoys]
       # Windows omni-completion launcher / search
     - [install-app wox]
-      # Windows better cmd window
-    - [install-app cmder]

@@ -1,0 +1,2 @@
+Open webpage url under cursor
+<gx>

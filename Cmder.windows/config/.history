@@ -1,0 +1,2 @@
+Sysmon.exe -u
+sudo Sysmon.exe -u
