@@ -1,8 +1,66 @@
 Windows
-wox configure
+Script - Check windows version. Needed for:
+ - WSL 2
+
+ 
+wox configure - Not working out great. Find alternate?
+
+Windows Terminal
+Near the bottom, advanced usage for context menu https://github.com/microsoft/terminal/issues/1060
+Group various shells / admin launch in current folder.
+  Maybe have a "last used" option as well
+Simplify installed git bash, wsl, etc
+
+META - Easy way to resolve the registry {laksdjflk-sdfadsf-asdfs-asd} codes
+
+Order options under "This PC"
+Package - https://github.com/ArcadeRenegade/SidebarDiagnostics/releases
+Package - Other various packages
+Package - https://github.com/Toinane/colorpicker/releases
+Investigate - https://github.com/unixuser011/WindowsConfig/blob/master/WindowsConfig.ps1
+Init - Call ~/.dotfiles/meta/init/Windows_NT/registry/general-tweaks
+Tweak - Windows Explorer - Start searching when typing
+Tweak - Powershell default colors?
+Tweak - Default shell for "Windows Terminal"
+Tweak - "Disable Aero Shake"
+Tweak - "Disable Downloads Blocking" - Maybe?
+Tweak - "Install command for CAB Files"
+Tweak - Customize "New" menu
+Tweak - Custom "Edit" app for context menu
+Tweak - Extract command for MSI
+Tweak - Run as administrator for msi/ps1/cmd/etc
+Tweak - Enable auto completion in file explorer
+Tweak - Disable edge prelaunching / preloading
+Tweak - Disable "- Shortcut" text on newly created shortcuts
+Tweak - Remove default context menu entries
+  - Scan with Windows Defender
+  - BitLocker
+  - Share?
+  - Restore Previous Versions
+  - Print
+  - Windows Media Player
+
 
 WSL
+Init - Install WSL
+Init - Use WSL 2
+Init - Install Ubuntu
+Learn - Link /home/morgan to %USERDATA%
 https://github.com/Konfekt/wsl-gui-bins - Launch windows gui from wsl
+Pass authentication through git for windows
+https://stackoverflow.com/questions/45925964/how-to-use-git-credential-store-on-wsl-ubuntu-on-windows
+Learn - wsl.conf file
+Note - \\wsl$\Ubuntu provides windows access to wsl file system
 
 ALL OS
 Abstract 'install'
+
+THEME
+
+Outlaws
+  - Green: logo #96CC5B
+  - Green: schemecolor.com  Sheen Green #97D700
+  - Green: Original announcement #96CA4E
+Titans 
+  - Green: Wageningen Green #2FB228
+  - Blue: Catalina Blue #09226B

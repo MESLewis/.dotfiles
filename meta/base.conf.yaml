@@ -58,5 +58,6 @@
     - [install-app x-mouse-button-control]
       # Windows power user utilities
     - [install-app powertoys]
-      # Windows omni-completion launcher / search
-    - [install-app wox]
+    - [install-app steam]
+      # Windows launcher for freeware utilities
+    - [install-app nirlauncher]

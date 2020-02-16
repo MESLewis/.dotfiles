@@ -1,0 +1,44 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\unblock]
+"MUIVerb"="Unblock"
+
+[HKEY_CLASSES_ROOT\*\shell\unblock\command]
+@="powershell.exe Unblock-File '%1'"
+
+
+
+[HKEY_CLASSES_ROOT\Directory\shell\unblock]
+"MUIVerb"="Unblock"
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\Directory\shell\unblock\shell\01unblock]
+"MUIVerb"="Unblock all files"
+
+[HKEY_CLASSES_ROOT\Directory\shell\unblock\shell\01unblock\command]
+@="powershell.exe dir '%1' | Unblock-File"
+
+[HKEY_CLASSES_ROOT\Directory\shell\unblock\shell\02unblock]
+"MUIVerb"="Unblock all files including files in subfolders"
+
+[HKEY_CLASSES_ROOT\Directory\shell\unblock\shell\02unblock\command]
+@="powershell.exe dir '%1' -Recurse | Unblock-File"
+
+
+
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\unblock]
+"MUIVerb"="Unblock"
+"SubCommands"=""
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\unblock\shell\01unblock]
+"MUIVerb"="Unblock all files"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\unblock\shell\01unblock\command]
+@="powershell.exe dir '%V' | Unblock-File"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\unblock\shell\02unblock]
+"MUIVerb"="Unblock all files including files in subfolders"
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\unblock\shell\02unblock\command]
+@="powershell.exe dir '%V' -Recurse | Unblock-File"

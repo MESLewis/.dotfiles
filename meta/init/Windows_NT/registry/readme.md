@@ -1,3 +1,16 @@
+#Naming format of generated / managed .reg files
+# [path.to.key|descriptor].enable.reg for scripts that enable features
+# [path.to.key|descriptor].disable.reg for scripts that disable features
+
+# Usage
+# Create apply-[group|description|etc].txt - List of .reg files to import into registry
+# Script (TODO) will read, (probably combine) and import list of .reg files into the registry
+
+# TODO
+# "Directory" contains a lot of global menu items. 
+# "Drive" another large entry
+
+
 # https://support.microsoft.com/en-us/help/310516/how-to-add-modify-or-delete-registry-subkeys-and-values-by-using-a-reg
 
 # Basics:
