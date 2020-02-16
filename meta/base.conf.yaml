@@ -39,9 +39,11 @@
     ~/AppData/Local/nvim: nvim
     ~/AppData/Local/nvim-data: nvim/nvim-data
     ~/AppData/Roaming/Highresolution Enterprises/XMouseButtonControl/XMBCSettings.xml : XMBCSettings.xml
+    ~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/profiles.json : terminal.windows/profiles.json
 
 - shell:
     - [install-app chocolatey]
+    - [install-app python]
     - [install-app adoptopenjdk, Installing latest AdoptOpenJDK]
     - [install-app jetbrainstoolbox, Installing Jetbrains Toolbox]
     - [install-app 7zip, Installing 7zip]
@@ -49,9 +51,10 @@
     - [install-app vlc]
     - [install-app inkscape]
     - [install-app gimp]
+    - [install-app windirstat]
     - [install-app wsl, Installing Windows Subsystem for Linux]
     - [install-app neovim]
-    - [install-app windirstat]
+    - [pip install pynvim]
     - [install-app nodejs]
     - [install-app yarn]
       # Windows mouse button tweaker

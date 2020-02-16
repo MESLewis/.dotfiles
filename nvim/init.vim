@@ -12,13 +12,28 @@ syntax on                 " syntax highlighting
 source $VIMRUNTIME/mswin.vim " Load defaults for windows
 
 
-" Specify directly for plugins
+" Specify directory for plugins
 call plug#begin(stdpath('data') . '/plugged')
 
+Plug 'icymind/NeoSolarized' " Solarized color scheme
 Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } } " Google Chrome vim interop
 Plug 'junegunn/vim-easy-align'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' } " Preview markdown files in browser
 Plug 'tpope/vim-fugitive' " Adds git commands to vim
+Plug 'ncm2/ncm2' " Code completion
+Plug 'prabirshrestha/async.vim' " Compatibility layer for vim-lsp
+Plug 'prabirshrestha/vim-lsp' " Consumes Language Server Protocol
+Plug 'mattn/vim-lsp-settings' " Auto config for vim-lsp
+
+" Automcompletion
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
 
 " Call PlugInstall when new plugins added
 autocmd VimEnter *
@@ -28,6 +43,12 @@ autocmd VimEnter *
 
 " Initialize plugin system
 call plug#end()
+
+""""""""THEME
+set termguicolors
+
+set background=dark
+colorscheme NeoSolarized
 
 
 """"""""Plug: EasyAlign 
