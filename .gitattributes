@@ -2,3 +2,5 @@
 *               text eol=lf
 # These are explicitly windows files and should use crlf
 *.bat           text eol=crlf
+# Treat .reg files as text instead of binary
+*.reg           diff
