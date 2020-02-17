@@ -20,7 +20,7 @@ ForEach-Object {
 		New-Item -ItemType "directory" -Path "$SubFolder" | Out-Null
 	}
 	#Set-PSDebug -Trace 0
-	echo $RegPath "$SubFolder\$Child.enable.reg"
+	#echo $RegPath "$SubFolder\$Child.enable.reg"
 	reg.exe export $RegPath "$SubFolder\$Child.enable.reg"
 }
 return
