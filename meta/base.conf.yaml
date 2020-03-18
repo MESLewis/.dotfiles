@@ -14,17 +14,13 @@
     description: Ensuring chocolatey is installed
     stderr: true
     quiet: true
-  -
-    command: cmd.exe /c "choco upgrade --yes --limit-output microsoft-windows-terminal"
-    description: Installing new Microsoft Terminal
-    stderr: true
-    quiet: true
   # Add bin\windows to user path
   -
-    command: cmd.exe /c "call bin\windows\pathadd.bat %USERPROFILE%\.dotfiles\bin\windows"
+    command: cmd.exe /c "setx path %PATH%;%USERPROFILE%\.dotfiles\bin\windows"
     description: Adding bin to path
     stderr: true
     quiet: true
+  - refreshenv
 
 - defaults:
     link:

@@ -10,7 +10,7 @@
 
     "profiles": {
       "defaults": {
-        "colorscheme": "Solarized Dark"
+        //"colorscheme": "Solarized Light"
       },
       "list": [
         {

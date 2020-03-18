@@ -1,9 +1,28 @@
 Windows
 Script - Check windows version. Needed for:
  - WSL 2
-
  
-wox configure - Not working out great. Find alternate?
+ global search?
+
+ call windows setting script
+
+ startup settings
+
+ one drive removal isn't working
+
+ clock
+
+ jetbrains defaults
+
+ windows task bar
+
+ start menu tiles
+
+ night light settings
+
+ clipboard history
+
+wsl doesn't install a distro
 
 Windows Terminal
 Near the bottom, advanced usage for context menu https://github.com/microsoft/terminal/issues/1060
@@ -18,6 +37,7 @@ Package - https://github.com/ArcadeRenegade/SidebarDiagnostics/releases
 Package - Other various packages
 Package - https://github.com/Toinane/colorpicker/releases
 Investigate - https://github.com/unixuser011/WindowsConfig/blob/master/WindowsConfig.ps1
+Investigate - Showing pc name in corner when remote desktop
 Init - Call ~/.dotfiles/meta/init/Windows_NT/registry/general-tweaks
 Tweak - Windows Explorer - Start searching when typing
 Tweak - Powershell default colors?

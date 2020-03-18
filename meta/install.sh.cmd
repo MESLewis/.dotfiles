@@ -73,6 +73,7 @@ refreshenv
 )
 
 REM Install python
+REM TODO Windows lies to you and tells you python is installed, but then it just launches the store
 WHERE /q python
 IF ERRORLEVEL == 1 (
 echo "Installing python"
@@ -88,10 +89,19 @@ SET DOTBOT_DIR=meta\dotbot
 SET DOTBOT_BIN=bin\dotbot.py
 SET BASEDIR=%cd%
 
-REM echo Updating meta/dotbot
+git rev-parse --is-inside-work-tree
+IF ERRORLEVEL == 1 (
+echo "Initializing git repository"
+git clone https://github.com/meslewis/.dotfiles
+cd .dotfiles
+call meta\install.sh.cmd
+exit
+)
+
+echo Updating meta/dotbot
 REM TODO I don't need to run this every time
-REM git -C "%DOTBOT_DIR%" submodule sync --quiet --recursive
-REM git submodule update --init --recursive "%DOTBOT_DIR%"
+git -C "%DOTBOT_DIR%" submodule sync --quiet --recursive
+git submodule update --init --recursive "%DOTBOT_DIR%"
 
 echo Running...
 python "%BASEDIR%\%DOTBOT_DIR%\%DOTBOT_BIN%" -d "%BASEDIR%" -c "%BASEDIR%\%CONFIG%" --no-color %*
